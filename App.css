@@ -1,0 +1,167 @@
+/* Colores base y diseño general */
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #181818;
+  color: #ffffff;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Título */
+.titulo {
+  color: #ffa31a;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Card */
+.card {
+  width: 100%;
+  border: 1px solid #333333;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  background-color: #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 0px 20px rgba(255, 163, 26, 0.4);
+}
+
+/* Tabla de usuarios */
+.tabla-usuarios {
+  margin-top: 20px;
+}
+
+.fila-usuario {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  transition: background-color 0.3s ease;
+  color: #ffffff;
+}
+
+.fila-usuario:hover {
+  background-color: #ffa31a;
+}
+
+.fila-usuario span {
+  flex: 1;
+  text-align: center;
+}
+
+.encabezado {
+  font-weight: bold;
+  color: #ffa31a;
+}
+
+/* Inputs y botones */
+input {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #555555;
+  border-radius: 5px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+input:focus {
+  outline: 2px solid #ffa31a;
+  /* Cambia el borde de foco a naranja */
+  border-color: #ffa31a;
+  /* Opcional: Cambia el color del borde también */
+}
+
+input::placeholder {
+  color: #cccccc;
+}
+
+button {
+  padding: 10px;
+  background-color: #ffa31a;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #cc8400;
+}
+
+/* Estilo para el modal de edición */
+.modal-edicion {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333333;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  z-index: 1000;
+  color: #ffffff;
+}
+
+.modal-edicion h3 {
+  margin-top: 0;
+  color: #ffa31a;
+}
+
+.modal-edicion input {
+  margin-bottom: 10px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #555555;
+}
+
+.modal-edicion button {
+  background-color: #ffa31a;
+  color: #000000;
+  margin-right: 10px;
+}
+
+.modal-edicion button:hover {
+  background-color: #cc8400;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
