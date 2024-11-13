@@ -23,12 +23,15 @@ export function Instala({ onAgregarUsuarios }) {
 
   return (
     <div>
+
+    <label>
       <input 
         type="file" 
         accept=".json" 
         onChange={handleFileUpload} 
         className="cargar-archivo"
       />
+      </label>
     </div>
   );
 }
