@@ -73,7 +73,7 @@ function App() {
 
   return (
     <div className="contenedor">
-      <img src="./public/logo.png" alt="LOGO" />
+      <img src="./logo.png" alt="LOGO" />
       <Registro onGuardar={guardarDatos} />
       <Registrados datos={datosGuardados} onEliminar={eliminarUsuario} />
       <Descargar datos={datosGuardados} />
