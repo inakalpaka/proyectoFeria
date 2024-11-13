@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 
 import get_contacts from "./routes/get_contacts.js";
 import modify_contact from "./routes/modify_contact.js";
-import login from "./routes/login.js";
-import signup from "./routes/signup.js";
 
 dotenv.config();
 const app = express();
@@ -21,8 +19,6 @@ mongoose
 
 app.use("/get_contacts", get_contacts);
 app.use("/modify_contact", modify_contact);
-app.use("/login", login);
-app.use("/signup", signup);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
