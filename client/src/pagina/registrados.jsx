@@ -1,49 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { Filas, Carta } from '../componentes';
-import { Instala } from './instala';
+import React, { useState, useEffect } from "react";
+import { Filas, Carta } from "../componentes";
+import { Instala } from "./instala";
 
 export function Registrados({ datos, onEliminar }) {
-  const [busqueda, setBusqueda] = useState('');
-  const [usuarios, setUsuarios] = useState(datos);
-  const [usuarioEditando, setUsuarioEditando] = useState(null);
-  const [nombreEditando, setNombreEditando] = useState('');
-  const [apellidoEditando, setApellidoEditando] = useState('');
-  const [telefonoEditando, setTelefonoEditando] = useState('');
+  const [busqueda, setBusqueda] = useState("");
+  const [contactos, setContacto] = useState(datos);
+  const [contactoEditando, setContactoEditando] = useState(null);
+  const [nombreEditando, setNombreEditando] = useState("");
+  const [apellidoEditando, setApellidoEditando] = useState("");
+  const [telefonoEditando, setTelefonoEditando] = useState("");
 
   useEffect(() => {
-    setUsuarios(datos);
+    setContacto(datos);
   }, [datos]);
 
-  const usuariosFiltrados = usuarios.filter(usuario =>
-    usuario.nombre.toLowerCase().startsWith(busqueda.toLowerCase())
+  const contactosFiltrados = contactos.filter((contacto) =>
+    contacto.nombre.toLowerCase().startsWith(busqueda.toLowerCase()),
   );
 
-  const handleAgregarUsuarios = (newUsers) => {
-    setUsuarios(prevUsuarios => [...prevUsuarios, ...newUsers]);
+  const handleAgregarContactos = (newContacts) => {
+    setContacto((prevContacts) => [...prevContacts, ...newContacts]);
   };
 
-  const handleEditarUsuario = (usuario) => {
-    setUsuarioEditando(usuario);
-    setNombreEditando(usuario.nombre);
-    setApellidoEditando(usuario.apellido);
-    setTelefonoEditando(usuario.telefono);
+  const handleEditarContacto = (contacto) => {
+    setContactoEditando(contacto);
+    setNombreEditando(contacto.nombre);
+    setApellidoEditando(contacto.apellido);
+    setTelefonoEditando(contacto.telefono);
   };
 
   const handleGuardarEdicion = () => {
-    const usuariosActualizados = usuarios.map(usuario =>
-      usuario.nombre === usuarioEditando.nombre
-        ? { nombre: nombreEditando, apellido: apellidoEditando, telefono: telefonoEditando }
-        : usuario
+    const contactoActualizados = contactos.map((contacto) =>
+      contacto.nombre === contactoEditando.nombre
+        ? {
+            nombre: nombreEditando,
+            apellido: apellidoEditando,
+            telefono: telefonoEditando,
+          }
+        : contacto,
     );
 
-    setUsuarios(usuariosActualizados);
-    localStorage.setItem('usuarios', JSON.stringify(usuariosActualizados));
-    setUsuarioEditando(null);
+    setContacto(contactoActualizados);
+    localStorage.setItem("usuarios", JSON.stringify(contactoActualizados));
+    setContactoEditando(null);
   };
 
   return (
     <Carta>
-      <h2>Usuarios Registrados</h2>
+      <h2>Contactos agendados</h2>
 
       <input
         type="text"
@@ -53,9 +57,9 @@ export function Registrados({ datos, onEliminar }) {
         className="barra-busqueda"
       />
 
-      <Instala onAgregarUsuarios={handleAgregarUsuarios} />
+      <Instala onAgregarUsuarios={handleAgregarContactos} />
 
-      {busqueda && usuariosFiltrados.length > 0 && (
+      {busqueda && contactosFiltrados.length > 0 && (
         <div className="tabla-usuarios">
           <div className="fila-usuario">
             <span>Nombre</span>
@@ -64,22 +68,22 @@ export function Registrados({ datos, onEliminar }) {
             <span>Editar</span>
             <span>Eliminar</span>
           </div>
-          {usuariosFiltrados.map((usuario, index) => (
+          {contactosFiltrados.map((contacto, index) => (
             <Filas
               key={index}
-              nombre={usuario.nombre}
-              apellido={usuario.apellido}
-              telefono={usuario.telefono}
-              onEliminar={() => onEliminar(usuario.nombre)}
-              onEditar={() => handleEditarUsuario(usuario)}
+              nombre={contacto.nombre}
+              apellido={contacto.apellido}
+              telefono={contacto.telefono}
+              onEliminar={() => onEliminar(contacto.nombre)}
+              onEditar={() => handleEditarContacto(contacto)}
             />
           ))}
         </div>
       )}
 
-      {usuarioEditando && (
+      {contactoEditando && (
         <div className="modal-edicion">
-          <h3>Editar Usuario</h3>
+          <h3>Editar contacto</h3>
           <input
             type="text"
             value={nombreEditando}
@@ -96,7 +100,7 @@ export function Registrados({ datos, onEliminar }) {
             onChange={(e) => setTelefonoEditando(e.target.value)}
           />
           <button onClick={handleGuardarEdicion}>Guardar Cambios</button>
-          <button onClick={() => setUsuarioEditando(null)}>Cancelar</button>
+          <button onClick={() => setContactoEditando(null)}>Cancelar</button>
         </div>
       )}
     </Carta>
