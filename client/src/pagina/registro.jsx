@@ -31,7 +31,7 @@ export function Registro({ onGuardar }) {
         value={telefono} 
         onChange={(e) => setTelefono(e.target.value)} 
       />
-      <Boton onClick={guardar}>guardar datos</Boton>
+      <Boton onClick={guardar}>Guardar datos</Boton>
     </Carta>
   );
 }

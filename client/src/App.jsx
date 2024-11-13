@@ -73,7 +73,7 @@ function App() {
 
   return (
     <div className="contenedor">
-      <h1 className="titulo">Contacts Manager</h1>
+      <img src="./public/logo.png" alt="LOGO" />
       <Registro onGuardar={guardarDatos} />
       <Registrados datos={datosGuardados} onEliminar={eliminarUsuario} />
       <Descargar datos={datosGuardados} />

@@ -47,7 +47,7 @@ export function Registrados({ datos, onEliminar }) {
 
       <input
         type="text"
-        placeholder="nombre de la persona"
+        placeholder="Nombre de la persona"
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
         className="barra-busqueda"
